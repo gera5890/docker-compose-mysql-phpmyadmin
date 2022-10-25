@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  mysql:
+    container_name: mysql
+    image: mysql:8
+    restart: always
+    volumes:
+      - ./sql-data/db:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    hostname: VIP
+    environment:
+      MYSQL_DATABASE: 'test'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: '123456'
+      MYSQL_ROOT_PASSWORD: 'helloworld'
+      MYSQL_ROOT_PASSWORD: 'helloworld'
+  app:
+    depends_on:
+     - mysql
+    image: phpmyadmin/phpmyadmin
+    container_name: Phpmyadmin
+    restart: always
+    ports:
+     - '8080:80'
+    environment:
+      PMA_HOST: mysql

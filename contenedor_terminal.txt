@@ -1,0 +1,4 @@
+ 
+docker exec -it "nombre contenedor" /bin/bash
+mysql -u user -p
+show databases;
